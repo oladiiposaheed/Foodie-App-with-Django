@@ -1,0 +1,17 @@
+{% extends 'sandbox/base.html' %}
+
+{% block content %}
+
+    {% if food %}
+        <h3>Food Item</h3>
+        <ul>
+            {% for food_item in food %}
+            <li>{{ food_item }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>No food items available.</h3>
+    {% endif %}
+
+
+{% endblock content %}
