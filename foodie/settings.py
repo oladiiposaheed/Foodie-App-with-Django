@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sandbox',
     'foodieApp',
+    'recipes',
+    'comments',
 ]
 
 MIDDLEWARE = [
