@@ -5,7 +5,7 @@ from django.db.models import Count, Avg, Sum, Max, Min, Q
 
 # Create your views here.
 def recipes(request):
-    #recipes_list = Recipe.objects.all()
+    recipes_list = Recipe.objects.all()
     #recipes_list = Recipe.objects.filter(category__name__icontains='West African Cuisine')
     #recipes_list = Recipe.objects.exclude(category__name__icontains='West African Cuisine')
     #recipes_list = Recipe.objects.exclude(category__name__exact='Pizza')
@@ -24,13 +24,25 @@ def recipes(request):
     #recipes_list = Recipe.objects.filter(id__gt=2).values()
     #recipes_list = Recipe.objects.filter(id__gt=2).values('name', 'description', 'date')
     #recipes_list = Recipe.objects.filter(id__gt=2).values_list()
-    recipes_list = Recipe.objects.filter(id__gt=2).values_list('name', 'description', 'date')
+    #recipes_list = Recipe.objects.filter(id__gt=2).values_list('name', 'description', 'date')
     #recipes_list = Recipe.objects.filter(id__gt=3).count()
-    recipes_list = Recipe.objects.filter(id__gt=3).exists()
-    recipes_list = Recipe.objects.filter(id__gt=10).exists()
-    recipes_list = Recipe.objects.filter(name__contains='Pizza').exists()
+    #recipes_list = Recipe.objects.filter(id__gt=3).exists()
+    #recipes_list = Recipe.objects.filter(id__gt=10).exists()
+    #recipes_list = Recipe.objects.filter(name__contains='Pizza').exists()
     dict = {
         'recipes_list': recipes_list,
     }
     print(dict)
-    return HttpResponse("This is the recipes page.")
+    return render(request, 'recipes/recipes.html', dict)
+
+def recipe_details(request, recipe_id):
+    try:
+        recipe = Recipe.objects.get(id=recipe_id)
+        dict = {'recipe': recipe}
+        return render(request, 'recipes/recipe_details.html', dict)
+    
+    except Recipe.DoesNotExist:
+        return HttpResponse('Recipe not found', status=404)
+    
+    
+    

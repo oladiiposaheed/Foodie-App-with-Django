@@ -3,5 +3,5 @@ from foodieApp import views
 
 app_name = 'foodieApp'
 urlpatterns = [
-    path('', views.index)
+    path('', views.index, name='index'),
 ]

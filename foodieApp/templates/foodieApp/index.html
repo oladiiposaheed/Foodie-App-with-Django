@@ -2,8 +2,12 @@
 
 {% block content %}
 
-<p>
-    Welcome to the Foodie App! This is the main page where you can explore various food items.
-</p>
+<h1>Welcome to Foodie</h1>
+<p>Your one-stop destination for delicious recipes!</p>
+
+<div>
+    <h2>Featured Recipes</h2>
+<a href="{% url 'recipes:recipes' %}">Foodie List</a>
+ 
 
 {% endblock content %}
