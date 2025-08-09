@@ -2,12 +2,14 @@
 
 {% block content %}
 
-<h1>Welcome to Foodie</h1>
-<p>Your one-stop destination for delicious recipes!</p>
 
+<h3>Categories</h3>
 <div>
-    <h2>Featured Recipes</h2>
-<a href="{% url 'recipes:recipes' %}">Foodie List</a>
- 
+    {% for category in categories %}
+        <div>
+            <a href="{% url 'foodieApp:category_recipes' category.id %}">{{ category }}</a>
+        </div>
+    {% endfor %}
+</div>
 
 {% endblock content %}

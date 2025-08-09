@@ -6,6 +6,11 @@ class Category(models.Model):
     name = models.CharField(max_length=100)
     date = models.DateField(auto_now_add=True)
     #description = models.TextField(blank=True)
+    
+    class Meta:
+        ordering = ['-date']
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
 
     def __str__(self):
         return self.name
